@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import ImagePicker from "../ImagePicker.jsx";
 
@@ -83,3 +84,15 @@ export default function EventForm({ inputData, onSubmit, children }) {
     </form>
   );
 }
+EventForm.propTypes = {
+  inputData: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    date: PropTypes.string,
+    time: PropTypes.string,
+    location: PropTypes.string,
+    image: PropTypes.string,
+  }),
+  onSubmit: PropTypes.func.isRequired,
+  children: PropTypes.node,
+};
