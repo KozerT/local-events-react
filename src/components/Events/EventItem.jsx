@@ -1,4 +1,15 @@
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
+
+EventItem.propTypes = {
+  event: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default function EventItem({ event }) {
   const formattedDate = new Date(event.date).toLocaleDateString("en-US", {
