@@ -24,7 +24,7 @@ export default function EditEvent() {
     onMutate: async (data) => {
       const newEvent = data.event;
 
-      queryClient.cancelQueries({ queryKey: ["events", params.id] });
+      await queryClient.cancelQueries({ queryKey: ["events", params.id] });
 
       const previousEvent = queryClient.getQueryData(["events", params.id]);
 
@@ -37,7 +37,7 @@ export default function EditEvent() {
     },
     onSettled: () => {
       queryClient.invalidateQueries(["events", params.id]);
-    },
+    }, // this will instantly update the backend
   });
 
   const navigate = useNavigate();
